@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab3/3</title>
+    <style>
+        body {
+            font-size: 24px;
+            background-color: rgb(215, 255, 255);
+        }
+        div {
+            margin-bottom: 10px;
+        }
+        button{
+            font-size: 15px;
+            padding: 10px 16px;
+        }
+    </style>
+</head>
+
+<body>
+        
+        <div id="1" style="background-color: rgb(85, 198, 255); width: 90px;">Math</div>
+        <div id="2"  style="background-color: rgb(85, 198, 255); width: 90px;">Thai</div>
+        <div id="3" style="background-color: rgb(85, 198, 255); width: 90px;">English</div>
+        <div id="4" style="background-color: rgb(85, 198, 255); width: 90px;">Science</div>
+        <div id="5" style="background-color: rgb(85, 198, 255);  width: 90px;">Social</div>
+        <button onclick="changbar();">View Chart</button>
+
+    <script>
+        var check = true;
+        function changbar(){
+            if(check == true){
+                document.getElementById("1").style = "background-color: rgb(85, 198, 255); width: 90px; padding-right: 100px";
+                document.getElementById("2").style = "background-color: rgb(85, 198, 255); width: 90px; padding-right: 50px";
+                document.getElementById("3").style = "background-color: rgb(85, 198, 255); width: 90px; padding-right: 70px";
+                document.getElementById("4").style = "background-color: rgb(85, 198, 255); width: 90px; padding-right: 83px";
+                document.getElementById("5").style = "background-color: rgb(85, 198, 255); width: 90px; padding-right: 30px";
+                check = false;
+            }else{
+                document.getElementById("1").style = "background-color: rgb(85, 198, 255); width: 90px;";
+                document.getElementById("2").style = "background-color: rgb(85, 198, 255); width: 90px;";
+                document.getElementById("3").style = "background-color: rgb(85, 198, 255); width: 90px;";
+                document.getElementById("4").style = "background-color: rgb(85, 198, 255); width: 90px;";
+                document.getElementById("5").style = "background-color: rgb(85, 198, 255); width: 90px;";
+                check = true;
+            }
+        }
+    </script>
+</body>
+
+</html>

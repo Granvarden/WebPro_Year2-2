@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Parkinsans:wght@300..800&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+        body {
+            font-family: "Sarabun", serif;
+            font-size: 24px;
+        }
+
+        button {
+            font-family: "Sarabun", serif;
+            font-size: 24px;
+            color: white;
+            background-color: rgb(69, 164, 164);
+        }
+
+        input {
+            font-family: "Sarabun", serif;
+            font-size: 24px;
+            height: 32px;
+        }
+
+        select {
+            font-family: "Sarabun", serif;
+            font-size: 24px;
+            height: 37px;
+        }
+
+        th {
+            padding: 5px;
+        }
+
+        .head {
+            color: white;
+            background-color: rgb(29, 152, 152);
+        }
+
+        .thm {
+            padding-left: 100px;
+            padding-right: 100px;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        .tabled,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>ตารางราบรับ-รายจ่าย</h1>
+        <h2>ยอดคงเหลือ</h2>
+        <div id="income" style="padding-bottom: 20px; font-size: 50px;">0</div>
+        <table style="margin: 25px;">
+            <thead>
+                <th>
+                    <input type="text" id="namelist" name="name" placeholder="รายการ">
+                </th>
+                <th>
+                    <input type="text" id="moneynum" name="name" placeholder="จำนวน">
+                </th>
+                <th>
+                    <select name="" id="selectinout">
+                        <option value="00" selected>รายรับ</option>
+                        <option value="01">รายจ่าย</option>
+                    </select>
+                </th>
+                <th>
+                    <input type="date" id="date">
+                </th>
+                <th><button type="button" onclick="addlist()">เพิ่มรายการ</button></th>
+            </thead>
+        </table>
+        <table class="tabled">
+            <thead class="head">
+                <th class="thm">วันที่</th>
+                <th class="thm">รายการ</th>
+                <th class="thm">รายรับ</th>
+                <th class="thm">รายจ่าย</th>
+            </thead>
+            <tbody id="list">
+            </tbody>
+        </table>
+    </center>
+    <script>
+        let money = parseInt(document.getElementById("income").firstChild.nodeValue) || 0;
+        function addlist() {
+            let num = parseInt(document.getElementById("moneynum").value);
+            let transactionType = document.getElementById("selectinout").value;
+            let namelist = document.getElementById("namelist").value;
+            let date = document.getElementById("date").value;
+
+            if (!namelist || !num || !date) {
+                alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+                return; // หยุด function
+            }
+
+            if (transactionType === "00") {
+                money += num;
+            } else {
+                money -= num;
+            }
+            //เปลี่ยนค่าแสดง
+            const income = document.getElementById("income");
+            income.removeChild(income.firstChild);
+            income.appendChild(document.createTextNode(String(money)));
+
+
+            //เพิ่มแถวใหม่
+            let newlist = document.createElement("tr");
+            let data1 = document.createElement("td");
+            let data2 = document.createElement("td");
+            let data3 = document.createElement("td");
+            let data4 = document.createElement("td");
+
+            data1.appendChild(document.createTextNode(date));
+            data2.appendChild(document.createTextNode(namelist));
+            if (transactionType === "00") {
+                data3.appendChild(document.createTextNode("0"));
+                data4.appendChild(document.createTextNode(String(money)));
+            } else {
+                data3.appendChild(document.createTextNode(String(money)));
+                data4.appendChild(document.createTextNode("0"));
+            }
+
+            newlist.appendChild(data1);
+            newlist.appendChild(data2);
+            newlist.appendChild(data3);
+            newlist.appendChild(data4);
+
+            document.getElementById("list").append(newlist);
+        }
+    </script>
+</body>
+
+</html>

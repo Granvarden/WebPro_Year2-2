@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab3/2</title>
+    <style>
+        button{
+            font-size: 30px;
+            margin: 10px;
+        }
+        body{
+            background-color: rgb(197, 255, 255);
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>สุ่มตัวเลข</h1>
+    <img id="1"src="http://10.0.15.21/lab/lab3/images/0.png" alt="zero" width="150">
+    <img id="2"src="http://10.0.15.21/lab/lab3/images/0.png" alt="one" width="150">
+    <img id="3"src="http://10.0.15.21/lab/lab3/images/0.png" alt="two" width="150">
+    <img id="4"src="http://10.0.15.21/lab/lab3/images/0.png" alt="three" width="150">
+    <img id="5"src="http://10.0.15.21/lab/lab3/images/0.png" alt="four" width="150">
+    <img id="6"src="http://10.0.15.21/lab/lab3/images/0.png" alt="five" width="150">
+    <br>
+    <button onclick="changimg();">สร้าง</button>
+    <br>
+    <p id="c"></p>
+    <script>
+        function changimg(){
+            var num1 = Math.floor(Math.random() * 10);
+            var num2 = Math.floor(Math.random() * 10);
+            var num3 = Math.floor(Math.random() * 10);
+            var num4 = Math.floor(Math.random() * 10);
+            var num5 = Math.floor(Math.random() * 10);
+            var num6 = Math.floor(Math.random() * 10);
+            document.getElementById("1").src = "http://10.0.15.21/lab/lab3/images/"+num1+".png";
+            document.getElementById("2").src = "http://10.0.15.21/lab/lab3/images/"+num2+".png";
+            document.getElementById("3").src = "http://10.0.15.21/lab/lab3/images/"+num3+".png";
+            document.getElementById("4").src = "http://10.0.15.21/lab/lab3/images/"+num4+".png";
+            document.getElementById("5").src = "http://10.0.15.21/lab/lab3/images/"+num5+".png";
+            document.getElementById("6").src = "http://10.0.15.21/lab/lab3/images/"+num6+".png";
+        }
+    </script>
+    </center>
+</body>
+</html>

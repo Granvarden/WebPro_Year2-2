@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="myForm">
+        <p><label for='num1'>Number 1:</label>
+            <input type="text" id="num1" name="num1" />
+        </p>
+        <p><label for='num1'>Number 2:</label>
+            <input type="text" id="num2" name="num2" />
+        </p>
+    </form>
+    <button type="button" onclick="calcu()">Calcualte</button>
+    <div id="div1">Result :</div>
+    <div id="div2"></div>
+    <script>
+        function calcu() {
+            let num1 = parseInt(document.getElementById("num1").value);
+            let num2 = parseInt(document.getElementById("num2").value);
+            const result = num1 + num2;
+
+            let resultnum = document.createElement("p");
+            let res = document.createElement("p");
+
+            let text = document.createTextNode(num1 + "+" + num2 + "=" + result);
+            let text2 = document.createTextNode("Result :" + result);
+
+            res.appendChild(text2);
+            resultnum.appendChild(text);
+            document.getElementById("div1").replaceChild(res, document.getElementById("div1").childNodes[0]);
+            document.getElementById("div2").appendChild(resultnum);
+
+            document.getElementById("num1").value = "";
+            document.getElementById("num2").value = "";
+        }
+    </script>
+</body>
+
+</html>

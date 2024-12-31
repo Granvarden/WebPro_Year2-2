@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-size: 24px;
+        }
+        button{
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="myForm">
+        <p>
+            <label for="name" id="nameLabel">ชื่อ:</label>
+            <input type="text" id="name" name="name" />
+        </p>
+
+        <p><label for='surname' id="surnameLabel">นามสกุล:</label>
+            <input type="text" id="surname" name="surname" />
+        </p>
+
+        <p>
+            <label for='country' id="country">ประเทศ:</label>
+            <select id="selectcountry" name="country">
+                <option value="00" selected>เลือกประเทศ</option>
+                <option value="01">ไทย</option>
+                <option value="02">เวียดนาม</option>
+                <option value="03">ลาว</option>
+                <option value="04">มาเลย์เซีย</option>
+                <option value="05">สิงคโปร์</option>
+                <option value="06">ฟิลิปปินส์</option>
+                <option value="07">เมียนมาร์</option>
+                <option value="08">กัมพูชา</option>
+                <option value="09">บรูไน</option>
+            </select>
+        </p>
+        <button id="button" type="button" onclick="change()">เปลี่ยนเป็นอังกฤษ</button>
+        <script>
+            var check = true;
+
+            function change() {
+                const nameLabel = document.getElementById("nameLabel");
+                const surnameLabel = document.getElementById("surnameLabel");
+                const countryLabel = document.getElementById("country");
+                const button = document.getElementById("button");
+                const selectCountry = document.getElementById('selectcountry');
+
+                const englishNames = [
+                    "First Name:", "Last Name:", "Country:", "Change to Thai"
+                ];
+
+                const thaiNames = [
+                    "ชื่อ:", "นามสกุล:", "ประเทศ:", "เปลี่ยนเป็นอังกฤษ"
+                ];
+
+                const countryNames = [
+                    "Select a country", "Thailand", "Vietnam", "Laos", "Malaysia", "Singapore",
+                    "Philippines", "Myanmar", "Cambodia", "Brunei"
+                ];
+
+                const thainame = [
+                    "เลือกประเทศ", "ไทย", "เวียดนาม", "ลาว", "มาเลย์เซีย", "สิงคโปร์",
+                    "ฟิลิปปินส์", "เมียนมาร์", "กัมพูชา", "บรูไน"
+                ];
+                
+                if (check) {
+                    nameLabel.removeChild(nameLabel.firstChild);
+                    nameLabel.appendChild(document.createTextNode(englishNames[0]));
+
+                    surnameLabel.removeChild(surnameLabel.firstChild);
+                    surnameLabel.appendChild(document.createTextNode(englishNames[1]));
+
+                    countryLabel.removeChild(countryLabel.firstChild);
+                    countryLabel.appendChild(document.createTextNode(englishNames[2]));
+
+                    button.removeChild(button.firstChild);
+                    button.appendChild(document.createTextNode(englishNames[3]));
+
+                    for (let i = 0; i < countryNames.length; i++) {
+                        const option = selectCountry.getElementsByTagName('option')[i];
+                        option.removeChild(option.firstChild);
+                        option.appendChild(document.createTextNode(countryNames[i]));
+                    }
+                    check = false;
+                } else {
+                    nameLabel.removeChild(nameLabel.firstChild);
+                    nameLabel.appendChild(document.createTextNode(thaiNames[0]));
+
+                    surnameLabel.removeChild(surnameLabel.firstChild);
+                    surnameLabel.appendChild(document.createTextNode(thaiNames[1]));
+
+                    countryLabel.removeChild(countryLabel.firstChild);
+                    countryLabel.appendChild(document.createTextNode(thaiNames[2]));
+
+                    button.removeChild(button.firstChild);
+                    button.appendChild(document.createTextNode(thaiNames[3]));
+
+                    for (let i = 0; i < thainame.length; i++) {
+                        const option = selectCountry.getElementsByTagName('option')[i];
+                        option.removeChild(option.firstChild);
+                        option.appendChild(document.createTextNode(thainame[i]));
+                    }
+                    check = true;
+                }
+            }
+        </script>
+    </form>
+</body>
+
+</html>
