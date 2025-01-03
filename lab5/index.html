@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <p id="out"></p>
+    <script>
+        let myObj = {
+            "firstname": "John",
+            "lastname": "Doe",
+            "age": 30,
+            "cars": ["Ford", "BMW", "Fiat"]
+        };
+
+        let text = myObj.firstname + ' <i>'+ myObj.lastname + '</i> (' + myObj.age + ') '+ myObj.cars[0];
+        for (let car of myObj.cars){
+            text += '<br>' + car + ' ';
+        }
+        document.getElementById("out").innerHTML = text;
+    </script>
+</body>
+
+</html>

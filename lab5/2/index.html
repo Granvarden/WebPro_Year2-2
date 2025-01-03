@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab5/2</title>
+    <style>
+        #div1 {
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 5px; 
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            width: 15%;
+            margin: 15px;
+            text-align: center;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .container {
+            padding: 2px 16px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+
+    </div>
+    <script>
+        function show(data) {
+            let linecard = document.getElementById("div1");
+
+            let num = 1;
+            for (let t of data) {
+                let card = document.createElement("div");
+                card.setAttribute("class", "card");
+
+                let img = document.createElement("img");
+                if (t.gender === "Male") {
+                    img.src = "../img/img_male.png";
+                    img.style = style="width:100%";
+
+                } else {
+                    img.src = "../img/img_female.png";
+                    img.style = style="width:100%";
+                }
+
+                card.appendChild(img);
+                let container = document.createElement("div");
+                container.setAttribute("class", "container");
+
+                //ชื่อ
+                let name = document.createElement("h3");
+                name.innerHTML = num +". "+ t.name;
+                container.appendChild(name);
+
+                //คะแนน
+                let physics = document.createElement("p");
+                physics.innerHTML = "Physics : "+ t.physics;
+                container.appendChild(physics);
+
+                //คะแนน
+                let maths = document.createElement("p");
+                maths.innerHTML = "Maths : "+ t.maths;
+                container.appendChild(maths);
+
+                //คะแนน
+                let english = document.createElement("p");
+                english.innerHTML = "English : "+ t.english;
+                container.appendChild(english);
+
+                card.appendChild(container);
+
+
+
+                linecard.appendChild(card);
+                num += 1;
+            }
+        }
+        fetch('student-score.json')
+            .then(response => response.json())
+            .then(data => show(data))
+            .catch(error => console.log('error', error));
+    </script>
+</body>
+
+</html>

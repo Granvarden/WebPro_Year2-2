@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="div1"></div>
+    <script>
+        function show(data) {
+            let text =  data.squadName + ' -- ' + data.homeTown
+            + ' (' + data.formed + ') ';
+
+            for (let member of data.members){
+                text += '<br>' + member.name + ' -- ' + member.age;
+                text += '<ol>';
+                for (let power of member.powers){
+                    text += '<li>' + power + '</li>';
+                } 
+                text += '</ol>';
+            }
+            text += '<h2>' + data.members[0].name + ' -- ' + data.members[0].age + '</h2>';
+            text += '<h2>' + data.members[0].powers[1] + '</h2>';
+            document.getElementById("div1").innerHTML = text;
+        }
+        fetch('superheroes.json')
+            .then(response => response.json())
+            .then(data => show(data))
+            .catch(error => console.log('error', error));
+    </script>
+</body>
+
+</html>

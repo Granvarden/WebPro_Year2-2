@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab5/1</title>
+    <style>
+        body {
+            font-size: 24px;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgb(132, 132, 132);
+        }
+
+        tr:nth-child(even) {
+            background-color: #D6EEEE;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Position</th>
+                <th>Address</th>
+            </thead>
+            <tbody id="bodyone">
+
+            </tbody>
+        </table>
+    </center>
+    <script>
+        const line = document.getElementById("bodyone");
+        function show(data) {
+            for (let t of data) {
+                let lineone = document.createElement("tr");
+                let data1 = document.createElement("td");
+                let data2 = document.createElement("td");
+                let data3 = document.createElement("td");
+                let data4 = document.createElement("td");
+                let data5 = document.createElement("td");
+
+                data1.appendChild(document.createTextNode(t.id));
+                data2.appendChild(document.createTextNode(t.FirstName + " " + t.LastName));
+                if (t.Gender == "Male") {
+                    data3.appendChild(document.createTextNode("M"));
+                } else {
+
+                    data3.appendChild(document.createTextNode("F"));
+                }
+                data4.appendChild(document.createTextNode(t.Position));
+                data5.appendChild(document.createTextNode(t.Address));
+
+                lineone.appendChild(data1);
+                lineone.appendChild(data2);
+                lineone.appendChild(data3);
+                lineone.appendChild(data4);
+                lineone.appendChild(data5);
+
+                line.appendChild(lineone);
+            }
+        }
+        fetch('employees.json')
+            .then(response => response.json())
+            .then(data => show(data))
+            .catch(error => console.log('error', error));
+    </script>
+</body>
+
+</html>
